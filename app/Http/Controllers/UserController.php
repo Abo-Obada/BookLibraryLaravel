@@ -10,12 +10,11 @@ class UserController extends Controller
 {
    public function login(Request $request)
 {
-   
     $credentials = $request->validate([
-        'email'    => 'required|email',
-        'password' => 'required',
+    'email'    => 'required|email',
+    'password' => 'required',
     ]);
-    
+
    if(!Auth::attempt($credentials)) {
       throw ValidationException::withMessages([
             'message' => ['The provided credentials are incorrect.'],
@@ -26,6 +25,14 @@ class UserController extends Controller
    Auth::setRememberDuration(43200);
    Auth::attempt($credentials, true);
    return response()->json(['user'=>Auth::user()->only('email','username')]);
+   }
+
+   public function logout (Request $request){
+    Auth::guard('web')->logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return response()->json(['message' => 'Logged out successfully']);
+
    }
 }
 
