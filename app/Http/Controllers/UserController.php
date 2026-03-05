@@ -32,7 +32,12 @@ class UserController extends Controller
     $request->session()->invalidate();
     $request->session()->regenerateToken();
     return response()->json(['message' => 'Logged out successfully']);
+   }
 
+   public function me(){ 
+     
+    $user = Auth::user()->only('username','email');
+   return $user;
    }
 }
 
