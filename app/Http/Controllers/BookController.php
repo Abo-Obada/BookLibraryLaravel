@@ -9,8 +9,18 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function getBookCover(){
-    $bookCovers = BookCover::get();
+    public function getAllBooks(){
+        sleep(10);
+    $bookCovers = BookCover::get([
+        'uuid',
+        'book_name'
+        ,'book_image',
+        'book_rate',
+        'book_page_number',
+        'created_at',
+        'book_description',
+        'views'
+        ])->toArray();
     return response()->json($bookCovers);
     }
 }

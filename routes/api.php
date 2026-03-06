@@ -11,4 +11,4 @@ Route::post('logout',[UserController::class,'logout']);
 
 });
 Route::post('login',[UserController::class,'login']);
-Route::get('bookcover',[BookController::class, 'getBookCover']);
+Route::get('bookcover',[BookController::class, 'getAllBooks']);
