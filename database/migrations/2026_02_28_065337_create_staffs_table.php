@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('user_id')->references('id')->on('users')->oDelete('set null');
             $table->timestamps();
         });

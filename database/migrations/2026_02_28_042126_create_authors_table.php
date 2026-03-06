@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique(); 
             $table->string('author_name');
             $table->string('nationality');
             $table->date('birth_date')->nullable(true);

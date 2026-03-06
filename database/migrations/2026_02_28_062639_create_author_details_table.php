@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('author_details', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique(); 
             $table->string('label');
             $table->string('value');
             $table->foreignId('author_id')->references('id')->on('authors')->onDelete('cascade');

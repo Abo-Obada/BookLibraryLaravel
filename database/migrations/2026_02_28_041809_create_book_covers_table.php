@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('book_covers', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique(); 
             $table->timestamps();
             $table->string('book_name');
             $table->string('book_image');

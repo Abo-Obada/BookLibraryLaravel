@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,3 +11,4 @@ Route::post('logout',[UserController::class,'logout']);
 
 });
 Route::post('login',[UserController::class,'login']);
+Route::get('bookcover',[BookController::class, 'getBookCover']);

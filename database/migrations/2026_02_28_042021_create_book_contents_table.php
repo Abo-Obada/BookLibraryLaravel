@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('book_contents', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique(); 
             $table->string('label');
             $table->string('value');
             $table->foreignId('book_id')->references('id')->on('books')->onDelete('cascade');

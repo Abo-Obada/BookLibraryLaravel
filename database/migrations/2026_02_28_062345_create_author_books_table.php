@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('author_books', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique(); 
             $table->foreignId('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreignId('author_id')->references('id')->on('authors')->oDelete('set null');
             $table->timestamps();
