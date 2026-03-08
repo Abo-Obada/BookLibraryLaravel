@@ -19,7 +19,22 @@ class BookController extends Controller
         'created_at',
         'book_description',
         'views'
-        ],"book")->paginate(5)->toArray();
+        ],"book")->get()->take(20)->toArray();
     return response()->json($bookCovers);
     }
 }
+
+
+// public function getAllBooks(){
+//     $bookCovers = BookCover::select([
+//         'uuid',
+//         'book_name'
+//         ,'book_image',
+//         'book_rate',
+//         'book_page_number',
+//         'created_at',
+//         'book_description',
+//         'views'
+//         ],"book")->paginate(5)->toArray();
+//     return response()->json($bookCovers);
+//     }
