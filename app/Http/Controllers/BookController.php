@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function getAllBooks(){
+    public function getAllBooks(Request $request){
     $bookCovers = BookCover::select([
         'uuid',
         'book_name'
@@ -19,7 +19,7 @@ class BookController extends Controller
         'created_at',
         'book_description',
         'views'
-        ],"book")->get()->take(20)->toArray();
+        ],"book")->paginate(5);
     return response()->json($bookCovers);
     }
 }
