@@ -36,7 +36,6 @@ class Bookcoversseeder extends Seeder
             ['id' => 19, 'created_at' => '2024-06-30 11:00:00', 'updated_at' => '2024-06-30 11:00:00', 'book_name' => 'أغنية الأرض',             'book_image' => 'https://egbookfair.com/cdn/shop/files/202503111048_0003_d1a58a73-4a4a-4047-851f-71f9420ac7d2_300x.jpg?v=1741809669',            'book_rate' => 4.9, 'book_description' => 'رواية بيئية شعرية تحكي عن قرية جبلية تواجه خطر الاختفاء بسبب التغيرات المناخية.',                                                         'book_id' => 19, 'book_page_number' => 300],
             ['id' => 20, 'created_at' => '2024-07-22 13:15:00', 'updated_at' => '2024-07-22 13:15:00', 'book_name' => 'الكتاب الأبيض',           'book_image' => 'https://cdn.abjjad.com/pub/66391578-3315-40a6-b9ec-f74aafb50916.png',            'book_rate' => 4.6, 'book_description' => 'رواية تجريبية تُروى بأسلوب فريد حيث الصفحات البيضاء تحمل ثقل ما لم يُقَل.',                                                               'book_id' => 20, 'book_page_number' => 190],
         ];
-
         foreach ($covers as &$cover) {
             $cover['uuid'] = Str::uuid()->toString();
         }

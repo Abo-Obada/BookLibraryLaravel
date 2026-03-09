@@ -12,3 +12,5 @@ Route::post('logout',[UserController::class,'logout']);
 });
 Route::post('login',[UserController::class,'login']);
 Route::get('bookcover',[BookController::class, 'getAllBooks']);
+Route::get('bookcategory',[BookController::class,'categorizeBook']);
+Route::get('category',[BookController::class,'getCategory']);
