@@ -24,25 +24,31 @@ class BookController extends Controller
     return response()->json($bookCovers);
     }
 
-    public function categorizeBook(){
+    public function categorizeBook() {
     $query = request('cq');
-    $bookCategory = Category::where('category_name','like',$query)->get();
-    $category =   $bookCategory->pluck("id");
 
-    $bookCovers = BookCover::select(
-['uuid','book_name','book_image',
-        'book_rate','book_page_number','created_at',
-        'book_description','views'
-        ]
-        );
+    $bookCategory = Category::where('category_name', 'like', '%' . $query . '%')->get();
+    $categoryIds = $bookCategory->pluck("id");
 
-    if($query == "all"){
-      $bookCovers =  $bookCovers->paginate(5);
-    }else{
-    $bookCovers = $bookCovers->where("category_id",'like', [$category])->paginate(5);
+    $bookCovers = BookCover::select([
+        'uuid', 'book_name', 'book_image',
+        'book_rate', 'book_page_number', 'created_at',
+        'book_description', 'views'
+    ]);
+
+    if (trim($query) === "all") {
+        $bookCovers = $bookCovers->paginate(5);
+    } elseif (trim($query) !== "") {
+        $bookCovers = $bookCovers
+            ->whereIn('category_id', $categoryIds)
+            ->orWhere('book_name', 'like', '%' . $query . '%')
+            ->paginate(5);
+    } else {
+        $bookCovers = $bookCovers->paginate(5);
     }
+
     return response()->json($bookCovers);
-    }
+}
 
 
     public function getCategory(){
@@ -51,12 +57,6 @@ class BookController extends Controller
         return response()->json($category);
     }
 
-    public function getUser(Request $request){
-        if(Auth::check()){
-    //....
-        }
-        return response()->json(['message','unothorized',401]);
-    }
 }
 
   //  $bookCategory = Category::where('category_name','like','%'.$query.'%')->get();
