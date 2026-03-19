@@ -18,4 +18,7 @@ public function getBookAuthor() {
     return $this->hasOneThrough(Author::class, AuthorBook::class, 'book_id', 'id','id','author_id')->select(['author_name','authors.uuid as uuid_author', 'authors.id as author_id']);
 }
 
+public function getBookContent(){
+    return $this->hasMany(BookContent::class, 'book_id','id')->select(['uuid','label','value','book_id']);
+}
 }

@@ -61,17 +61,11 @@ class BookController extends Controller
         return response()->json($author);
     }
 
-
-    //testing method
-   public function getBookCover() {
-    $bookCovers = Book::with(['getBook','getBookAuthor']);
-    $bookCovers = $bookCovers->paginate(5)->through(fn($book)=> array_merge(
-    $book->getBook->toArray(),
-    $book->getBookAuthor->toArray(),
-));
-
-    return response()->json($bookCovers);
-}
+    public function getBook($uuid){
+    $book = new Book();
+    $book = $book->with(['getBook','getBookAuthor','getBookContent']);
+    return response()->json($book->findOrFail($uuid));
+    }
 
 }
 
