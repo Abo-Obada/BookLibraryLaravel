@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookContent extends Model
 {
+        protected $hidden = ['id'];
     protected $table = "book_contents";
 }
