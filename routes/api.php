@@ -14,3 +14,5 @@ Route::post('login',[UserController::class,'login']);
 Route::get('bookcover',[BookController::class, 'getAllBooks']);
 Route::get('bookcategory',[BookController::class,'categorizeBook']);
 Route::get('category',[BookController::class,'getCategory']);
+Route::get('author',[BookController::class,'getAuthor']);
+Route::get('test',[BookController::class,'getBookCover']);
