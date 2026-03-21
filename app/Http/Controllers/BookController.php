@@ -64,7 +64,11 @@ class BookController extends Controller
     public function getBook($uuid){
     $book = new Book();
     $book = $book->with(['getBook','getBookAuthor','getBookContent']);
-    return response()->json($book->findOrFail($uuid));
+    return response()->json($book->where('uuid', $uuid)->first());
+    }
+
+    public function getComments(){
+
     }
 
 }
