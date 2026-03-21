@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\BookCover;
 use App\Models\BookModel;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -68,9 +69,8 @@ class BookController extends Controller
     }
 
     public function getComments(){
-
+        $comments = Comment::get();
     }
-
 }
 
   //  $bookCategory = Category::where('category_name','like','%'.$query.'%')->get();

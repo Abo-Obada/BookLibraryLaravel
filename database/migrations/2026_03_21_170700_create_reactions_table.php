@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('reactions', function (Blueprint $table) {
             $table->id();
-            $table->string('comment');
             $table->uuid('uuid');
-            $table->boolean('edited')->default(false);
-            $table->foreignId('user_id')->constrained('id')->on('users')->onDelete('cascade');
-             $table->foreignId('book_id')->constrained('id')->on('books')->onDelete('cascade');
             $table->timestamps();
+            $table->foreignId('comment_id')->references('id')->on('comments')->onDelete('cascade');
+            $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
+            $table->string('reaction');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('reactions');
     }
 };
