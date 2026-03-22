@@ -17,3 +17,4 @@ Route::get('category',[BookController::class,'getCategory']);
 Route::get('author',[BookController::class,'getAuthor']);
 Route::get('test',[BookController::class,'getBookCover']);
 Route::get('showBook/{uuid}',[BookController::class,'getBook']);
+Route::get('comments/{uuid}',[BookController::class,'getComment']);

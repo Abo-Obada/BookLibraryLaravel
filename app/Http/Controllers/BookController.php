@@ -32,11 +32,12 @@ class BookController extends Controller
 
 
 
-    $bookCovers = Book::with(['getBook','getBookAuthor']);
+    $bookCovers = Book::orderBy('id','asc')->select(['books.uuid as book_uuid','id'])->with(['getBook','getBookAuthor']);
 
 
     if (trim($query) === "all") {
         $bookCovers = $bookCovers->paginate(5)->through(fn($book)=> array_merge(
+    $book->toArray(),
     $book->getBook->toArray(),
     $book->getBookAuthor->toArray(),
 ));
@@ -68,9 +69,11 @@ class BookController extends Controller
     return response()->json($book->where('uuid', $uuid)->first());
     }
 
-    public function getComments(){
-        $comments = Comment::get();
+    public function getComment($uuid){
+        $bookId = Book::where('uuid', $uuid)->select('id')->pluck('id');
+         $comments = Comment::where('book_id',$bookId)->with(['getReactionCountPerComment','commentOwner'])
+         ->select(['comment','uuid','edited','rate','updated_at',"id","user_id"])
+         ->paginate(5);
+        return response()->json($comments);
     }
 }
-
-  //  $bookCategory = Category::where('category_name','like','%'.$query.'%')->get();

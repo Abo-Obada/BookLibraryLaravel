@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('reactions', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
+            $table->uuid('uuid')->unique();
             $table->timestamps();
             $table->foreignId('comment_id')->references('id')->on('comments')->onDelete('cascade');
-            $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('reaction');
+            $table->unique(['user_id','comment_id']);
         });
     }
 
