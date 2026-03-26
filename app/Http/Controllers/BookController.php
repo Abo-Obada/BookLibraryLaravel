@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Book;
-use App\Models\BookCover;
-use App\Models\BookModel;
 use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -75,5 +74,10 @@ class BookController extends Controller
          ->select(['comment','uuid','edited','rate','updated_at',"id","user_id"])
          ->paginate(5);
         return response()->json($comments);
+    }
+
+    public function postReaction(){
+        $getAuth = Auth::user( );
+        return response()->json($getAuth);
     }
 }

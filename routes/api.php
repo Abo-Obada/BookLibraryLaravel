@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function (){
 Route::get('me', [UserController::class,'me']);
 Route::post('logout',[UserController::class,'logout']);
+Route::post('postreaction',[BookController::class,'postReaction']);
 
 });
 Route::post('login',[UserController::class,'login']);

@@ -14,6 +14,6 @@ class Comment extends Model
     }
 
     public function commentOwner(){
-        return $this->belongsTo(User::class,"user_id","id")->select(["name","id"]);
+        return $this->belongsTo(User::class,"user_id","id")->select(["username","id"]);
     }
 }

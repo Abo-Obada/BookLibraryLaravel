@@ -21,23 +21,23 @@ public function run()
     ]);
 
     User::factory()->create([
-        'name'     => 'Test User',
+        'username'     => 'Test User',
         'email'    => 'test@example.com',
         'password' => '123456',
         'uuid'     => SupportStr::uuid()
     ]);
 
     $arabicUsers = [
-        ['name' => 'محمد العمري',   'email' => 'mohammed@example.com'],
-        ['name' => 'فاطمة الزهراء', 'email' => 'fatima@example.com'],
-        ['name' => 'عبدالله الحربي','email' => 'abdullah@example.com'],
-        ['name' => 'نورة السعيد',   'email' => 'noura@example.com'],
-        ['name' => 'يوسف الأحمد',   'email' => 'youssef@example.com'],
+        ['username' => 'محمد العمري',   'email' => 'mohammed@example.com'],
+        ['username' => 'فاطمة الزهراء', 'email' => 'fatima@example.com'],
+        ['username' => 'عبدالله الحربي','email' => 'abdullah@example.com'],
+        ['username' => 'نورة السعيد',   'email' => 'noura@example.com'],
+        ['username' => 'يوسف الأحمد',   'email' => 'youssef@example.com'],
     ];
 
     foreach ($arabicUsers as $user) {
         User::factory()->create([
-            'name'     => $user['name'],
+            'username'     => $user['username'],
             'email'    => $user['email'],
             'password' => '123456',
             'uuid'     => SupportStr::uuid()
