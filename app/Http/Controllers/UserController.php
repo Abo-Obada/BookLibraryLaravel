@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -34,10 +35,25 @@ class UserController extends Controller
     return response()->json(['message' => 'Logged out successfully']);
    }
 
-   public function me(){ 
-     
-    $user = Auth::user()->only('username','email');
+   public function me(){
+
+    $user = Auth::user()->only('username','email','uuid');
    return $user;
    }
+
+
+   //delete it or comment it later....
+
+   public function loginApi(Request $request) {
+    $credentials = $request->only('email', 'password');
+
+    if (!$token = Auth::attempt($credentials)) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    $user = User::where('email',$request->email)->first();
+    $user =  $user->createToken('api-token-test')->plainTextToken;
+    return response()->json(['token' => $user]);
 }
 
+}

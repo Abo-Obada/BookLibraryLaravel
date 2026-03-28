@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function (){
 Route::get('me', [UserController::class,'me']);
 Route::post('logout',[UserController::class,'logout']);
-Route::post('postreaction',[BookController::class,'postReaction']);
-
+Route::post('createcomment/{uuid}',[BookController::class,'createComment']);
+Route::put('createreaction/{uuid}',[BookController::class,'createReaction']);
 });
 Route::post('login',[UserController::class,'login']);
+Route::post('login_api',[UserController::class,'loginApi']);
 Route::get('bookcover',[BookController::class, 'getAllBooks']);
 Route::get('bookcategory',[BookController::class,'categorizeBook']);
 Route::get('category',[BookController::class,'getCategory']);
