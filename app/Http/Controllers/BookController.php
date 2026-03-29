@@ -15,9 +15,10 @@ use Illuminate\Support\Str as SupportStr;
 class BookController extends Controller
 {
     public function getAllBooks(){
-        $bookCovers = Book::with(['getBook','getBookAuthor'])
+        $bookCovers = Book::select(['books.uuid as book_uuid','id'])->with(['getBook','getBookAuthor'])
         ->paginate(5)
         ->through(fn($book)=> array_merge(
+            $book->toArray(),
         $book->getBook->toArray(),
         $book->getBookAuthor->toArray()
     ));
@@ -47,7 +48,11 @@ class BookController extends Controller
         $bookCovers = $bookCovers
             ->whereHas('getBook', fn($q) => $q->whereIn('category_id', $categoryIds)
             ->orWhere('book_name', 'like', '%' . $query . '%'))->orWhereHas('getBookAuthor', fn($q) => $q->whereIn('authors.id', $author_id))
-            ->paginate(5)->through(fn($book)=> $book->getBook);
+            ->paginate(5)->through(fn($book)=>  array_merge(
+                $book->toArray(),
+                $book->getBook->toArray(),
+                $book->getBookAuthor->toArray(),
+            ));
     } else {
         $bookCovers = $bookCovers->paginate(5)->through(fn($book)=> $book->getBook);
     }
