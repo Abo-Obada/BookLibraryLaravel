@@ -46,5 +46,6 @@ public function run()
 
     $this->call([
         CommentsSeeder::class,
+        CarouselSeeder::class,
     ]);
 }}

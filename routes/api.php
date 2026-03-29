@@ -20,3 +20,4 @@ Route::get('author',[BookController::class,'getAuthor']);
 Route::get('test',[BookController::class,'getBookCover']);
 Route::get('showBook/{uuid}',[BookController::class,'getBook']);
 Route::get('comments/{uuid}',[BookController::class,'getComment']);
+Route::get('carousel',[BookController::class,'getCarousel']);

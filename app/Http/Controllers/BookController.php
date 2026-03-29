@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Carousel;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Reaction;
@@ -158,5 +159,8 @@ class BookController extends Controller
     }
  return response()->json(['message'=> 'ok'],200);
 }
+}
+public function getCarousel(){
+    return Carousel::orderBy('id','desc')->get();
 }
 }
