@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Models\Author;
 use App\Models\Book;
@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Support\Str as SupportStr;
-
+use app\Http\Controllers\Controller;
 class BookController extends Controller
 {
     public function getAllBooks(){

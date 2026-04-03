@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-
+use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
    public function login(Request $request)
@@ -40,7 +40,6 @@ class UserController extends Controller
     $user = Auth::user()->only('username','email','uuid');
    return $user;
    }
-
 
    //delete it or comment it later....
 
