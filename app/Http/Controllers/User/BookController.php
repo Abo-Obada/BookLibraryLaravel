@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Support\Str as SupportStr;
-use app\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 class BookController extends Controller
 {
     public function getAllBooks(){

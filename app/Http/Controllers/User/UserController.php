@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
    public function login(Request $request)
