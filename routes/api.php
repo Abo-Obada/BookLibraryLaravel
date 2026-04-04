@@ -1,17 +1,27 @@
 <?php
 
+use App\Http\Controllers\Admins\BookAdminController;
 use App\Http\Controllers\User\BookController;
 use App\Http\Controllers\User\UserController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->group(function (){
-Route::get('me', [UserController::class,'me']);
-Route::post('logout',[UserController::class,'logout']);
-Route::post('createcomment/{uuid}',[BookController::class,'createComment']);
-Route::put('createreaction/{uuid}',[BookController::class,'createReaction']);
+Route::prefix("user")->group( function(){
+    Route::get('me', [UserController::class,'me']);
+    Route::post('logout',[UserController::class,'logout']);
+    Route::post('createcomment/{uuid}',[BookController::class,'createComment']);
+    Route::put('createreaction/{uuid}',[BookController::class,'createReaction']);
+    Route::middleware('auth:sanctum')->group(function (){
 });
+});
+
+
+Route::prefix("admin")->group(function (){
+    Route::get('getbookadmin', [BookAdminController::class,'getBook']);
+});
+
+
 Route::post('login',[UserController::class,'login']);
 Route::post('login_api',[UserController::class,'loginApi']);
 Route::get('bookcover',[BookController::class, 'getAllBooks']);

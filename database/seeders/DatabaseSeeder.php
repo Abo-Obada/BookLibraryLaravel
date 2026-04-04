@@ -47,5 +47,8 @@ public function run()
     $this->call([
         CommentsSeeder::class,
         CarouselSeeder::class,
+        RoleSeeder::class,
+        PermissionSeeder::class,
+        GivePermissionSeed::class,
     ]);
 }}
