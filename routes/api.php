@@ -37,6 +37,8 @@ Route::prefix("admin")->group(function (){
         Route::get('me',[AdminController::class,'me']);
         Route::get('getbookadmin', [BookAdminController::class,'getBook'])->middleware('auth:sanctum');
     });
+
+    Route::post('login',[AdminController::class,'login']);
 });
 
 
