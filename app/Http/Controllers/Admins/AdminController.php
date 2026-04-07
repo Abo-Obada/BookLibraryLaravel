@@ -14,7 +14,7 @@ class AdminController extends Controller
         $auth = Auth::user()->only('username','email','uuid');
         $roles = Auth::user()->getRoleNames();
         if(Auth::user()->roles->count() == 0){
-        return response()->json(['message'=>'ليس لديك الصلاحية للدخول لهذه الصفحة'],400);
+        return response()->json(['message'=>'لا يمكنك الدخول إلى الصفحة'],403);
         }
 
         return response()->json(['user'=>$auth, 'role'=>$roles]);
@@ -27,7 +27,7 @@ class AdminController extends Controller
     }
      $roleCount = Auth::user()->roles->count();
      if($roleCount == 0){
-        return response()->json(['message'=> 'ليس لديك صلاحية للدخول للصفحة'],401);
+        return response()->json(['message'=> 'ليس لديك صلاحية للدخول للصفحة'],403);
      }
     Auth::setRememberDuration(43200);
     $email = Purify::clean($request['email']);

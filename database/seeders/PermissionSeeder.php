@@ -16,47 +16,47 @@ class PermissionSeeder extends Seeder
         $permissions =
         [
             //book
-            ['name'=>'read book'],
-            ['name'=>'edit book'],
-            ['name'=>'update book'],
-            ['name'=>'create book'],
-            ['name'=>'delete book'],
+            ['name'=>'read book', 'guard_name' => 'sanctum'],
+            ['name'=>'edit book', 'guard_name' => 'sanctum'],
+            ['name'=>'update book', 'guard_name' => 'sanctum'],
+            ['name'=>'create book', 'guard_name' => 'sanctum'],
+            ['name'=>'delete book', 'guard_name' => 'sanctum'],
 
             //category
-            ['name'=>'read category'],
-            ['name'=>'edit category'],
-            ['name'=>'update category'],
-            ['name'=>'create category'],
-            ['name'=>'delete category'],
+            ['name'=>'read category', 'guard_name' => 'sanctum'],
+            ['name'=>'edit category', 'guard_name' => 'sanctum'],
+            ['name'=>'update category', 'guard_name' => 'sanctum'],
+            ['name'=>'create category', 'guard_name' => 'sanctum'],
+            ['name'=>'delete category', 'guard_name' => 'sanctum'],
 
             //author
-            ['name'=>'read author'],
-            ['name'=>'edit author'],
-            ['name'=>'update author'],
-            ['name'=>'create author'],
-            ['name'=>'delete author'],
+            ['name'=>'read author', 'guard_name' => 'sanctum'],
+            ['name'=>'edit author', 'guard_name' => 'sanctum'],
+            ['name'=>'update author', 'guard_name' => 'sanctum'],
+            ['name'=>'create author', 'guard_name' => 'sanctum'],
+            ['name'=>'delete author', 'guard_name' => 'sanctum'],
 
 
             //users
-            ['name'=>'read users'],
-            ['name'=>'edit users'],
-            ['name'=>'update users'],
-            ['name'=>'create users'],
-            ['name'=>'delete users'],
+            ['name'=>'read users', 'guard_name' => 'sanctum'],
+            ['name'=>'edit users', 'guard_name' => 'sanctum'],
+            ['name'=>'update users', 'guard_name' => 'sanctum'],
+            ['name'=>'create users', 'guard_name' => 'sanctum'],
+            ['name'=>'delete users', 'guard_name' => 'sanctum'],
 
             //roles
-            ['name'=>'read roles'],
-            ['name'=>'edit roles'],
-            ['name'=>'update roles'],
-            ['name'=>'create roles'],
-            ['name'=>'delete roles'],
+            ['name'=>'read roles', 'guard_name' => 'sanctum'],
+            ['name'=>'edit roles', 'guard_name' => 'sanctum'],
+            ['name'=>'update roles', 'guard_name' => 'sanctum'],
+            ['name'=>'create roles', 'guard_name' => 'sanctum'],
+            ['name'=>'delete roles', 'guard_name' => 'sanctum'],
 
              //permission
-            ['name'=>'read permissions'],
-            ['name'=>'edit permissions'],
-            ['name'=>'update permissions'],
-            ['name'=>'create permissions'],
-            ['name'=>'delete permissions'],
+            ['name'=>'read permissions', 'guard_name' => 'sanctum'],
+            ['name'=>'edit permissions', 'guard_name' => 'sanctum'],
+            ['name'=>'update permissions', 'guard_name' => 'sanctum'],
+            ['name'=>'create permissions', 'guard_name' => 'sanctum'],
+            ['name'=>'delete permissions', 'guard_name' => 'sanctum'],
 
         ];
 

@@ -15,7 +15,7 @@ class GivePermissionSeed extends Seeder
     public function run(): void
     {
         //give all permission to the owner
-       $roleName = Role::findByName("owner");
+       $roleName = Role::findByName("owner","sanctum");
        $roleName->syncPermissions(Permission::all());
     }
 }

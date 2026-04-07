@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\RouteHasPermission;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Route;
+
 class UserController extends Controller
 {
    public function login(Request $request)
@@ -54,5 +59,11 @@ class UserController extends Controller
     $user =  $user->createToken('api-token-test')->plainTextToken;
     return response()->json(['token' => $user]);
 }
+
+public function displayRoutes (Request $request){
+
+     //Get current Role name.
+
+    }
 
 }

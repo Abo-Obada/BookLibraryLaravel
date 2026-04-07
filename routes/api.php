@@ -16,30 +16,28 @@ Route::prefix("user")->group( function(){
         Route::post('createcomment/{uuid}',[BookController::class,'createComment']);
         Route::put('createreaction/{uuid}',[BookController::class,'createReaction']);
         Route::get('me', [UserController::class,'me']);
+        Route::get('routes',[UserController::class,'displayRoutes']);
     });
 
-Route::post('login',[UserController::class,'login']);
-Route::post('login_api',[UserController::class,'loginApi']);
-Route::get('bookcover',[BookController::class, 'getAllBooks']);
-Route::get('bookcategory',[BookController::class,'categorizeBook']);
-Route::get('category',[BookController::class,'getCategory']);
-Route::get('author',[BookController::class,'getAuthor']);
-//Route::get('test',[BookController::class,'getBookCover']);
-Route::get('showBook/{uuid}',[BookController::class,'getBook']);
-Route::get('comments/{uuid}',[BookController::class,'getComment']);
-Route::get('carousel',[BookController::class,'getCarousel']);
+    Route::post('login',[UserController::class,'login']);
+    //Route::post('login_api',[UserController::class,'loginApi']);
+    Route::get('bookcover',[BookController::class, 'getAllBooks']);
+    Route::get('bookcategory',[BookController::class,'categorizeBook']);
+    Route::get('category',[BookController::class,'getCategory']);
+    Route::get('author',[BookController::class,'getAuthor']);
+    //Route::get('test',[BookController::class,'getBookCover']);
+    Route::get('showBook/{uuid}',[BookController::class,'getBook']);
+    Route::get('comments/{uuid}',[BookController::class,'getComment']);
+    Route::get('carousel',[BookController::class,'getCarousel']);
 });
 
 
 Route::prefix("admin")->group(function (){
 
-    Route::middleware('auth:sanctum')->group(function (){
+    Route::middleware(['auth:sanctum','middlewarePermission'])->group(function (){
         Route::get('me',[AdminController::class,'me']);
         Route::get('getbookadmin', [BookAdminController::class,'getBook'])->middleware('auth:sanctum');
     });
 
     Route::post('login',[AdminController::class,'login']);
 });
-
-
-
