@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admins\AdminController;
 use App\Http\Controllers\Admins\BookAdminController;
+use App\Http\Controllers\Admins\RoleController;
 use App\Http\Controllers\User\BookController;
 use App\Http\Controllers\User\UserController;
 
@@ -20,7 +21,7 @@ Route::prefix("user")->group( function(){
     });
 
     Route::post('login',[UserController::class,'login']);
-    //Route::post('login_api',[UserController::class,'loginApi']);
+    Route::post('login_api',[UserController::class,'loginApi']);
     Route::get('bookcover',[BookController::class, 'getAllBooks']);
     Route::get('bookcategory',[BookController::class,'categorizeBook']);
     Route::get('category',[BookController::class,'getCategory']);
@@ -36,7 +37,8 @@ Route::prefix("admin")->group(function (){
 
     Route::middleware(['auth:sanctum','middlewarePermission'])->group(function (){
         Route::get('me',[AdminController::class,'me']);
-        Route::get('getbookadmin', [BookAdminController::class,'getBook'])->middleware('auth:sanctum');
+        Route::get('getrole',[RoleController::class,'get']);
+        Route::post('storerole',[RoleController::class,'store']);
     });
 
     Route::post('login',[AdminController::class,'login']);

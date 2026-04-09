@@ -96,7 +96,7 @@ class BookController extends Controller
     $validate =$request->validate(['comment'=>'required','rate'=>'required|numeric',
          ]);
          if(!$validate){
-            return response()->json(['error'=> 'error'],0);
+            return response()->json(['error'=> 'error'],422);
          }
         $pureComment = Purify::clean($request->comment);
         $rate = $request->rate;

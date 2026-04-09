@@ -23,7 +23,7 @@ class RoutePermissionMiddleware
    $routePermission = RouteHasPermission::whereIn('permission_id',$perm)->get();
     $isFound = $routePermission->contains(fn($permission) => $permission->route == $currentRoute);
     if (!$isFound) {
-        return response()->json(['message'=>'unothorized','currentRoute' => $currentRoute],403);
+        return response()->json(['message'=>'forbidden','currentRoute' => $currentRoute],403);
     }
         return $next($request);
     }
