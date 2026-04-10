@@ -19,9 +19,9 @@ class RoutePermissionMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $perm = Auth::user()->getAllPermissions()->select('id');
-    $currentRoute = Route::getCurrentRoute()->uri();
-   $routePermission = RouteHasPermission::whereIn('permission_id',$perm)->get();
-    $isFound = $routePermission->contains(fn($permission) => $permission->route == $currentRoute);
+        $currentRoute = Route::getCurrentRoute()->uri();
+       $routePermission = RouteHasPermission::whereIn('permission_id',$perm)->get();
+       $isFound = $routePermission->contains(fn($permission) => $permission->route == $currentRoute);
     if (!$isFound) {
         return response()->json(['message'=>'forbidden','currentRoute' => $currentRoute],403);
     }
