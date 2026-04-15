@@ -50,6 +50,7 @@ public function run()
         RoleSeeder::class,
         PermissionSeeder::class,
         GivePermissionSeed::class,
-        givePermissionPerRoute::class
+        givePermissionPerRoute::class,
+        GivePermissionPerRoute::class,
     ]);
 }}

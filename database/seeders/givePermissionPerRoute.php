@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Route;
 
-class givePermissionPerRoute extends Seeder
+class GivePermissionPerRoute extends Seeder
 {
     /**
      * Run the database seeds.
