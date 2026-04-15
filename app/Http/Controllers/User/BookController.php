@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 use Illuminate\Support\Str as SupportStr;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
 class BookController extends Controller
 {
     public function getAllBooks(){
@@ -162,5 +164,18 @@ class BookController extends Controller
 }
 public function getCarousel(){
     return Carousel::orderBy('id','desc')->get();
+}
+
+public function test()
+{
+    $route = Route::getRoutes();
+    $routeName[] = [''];
+    foreach ($route->getRoutes() as $key => $value) {
+       $routeName = array_filter($routeName, fn($value) => $value !== null && $value !== 'sanctum/csrf-cookie');
+        array_push($routeName, $value);
+    }
+
+
+    return response()->json(['routes'=> $routeName],200);
 }
 }

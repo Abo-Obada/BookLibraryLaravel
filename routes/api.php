@@ -21,7 +21,7 @@ Route::prefix("user")->group( function(){
     });
 
     Route::post('login',[UserController::class,'login']);
-    Route::post('login_api',[UserController::class,'loginApi']);
+   // Route::post('login_api',[UserController::class,'loginApi']);
     Route::get('bookcover',[BookController::class, 'getAllBooks']);
     Route::get('bookcategory',[BookController::class,'categorizeBook']);
     Route::get('category',[BookController::class,'getCategory']);
@@ -30,6 +30,8 @@ Route::prefix("user")->group( function(){
     Route::get('showBook/{uuid}',[BookController::class,'getBook']);
     Route::get('comments/{uuid}',[BookController::class,'getComment']);
     Route::get('carousel',[BookController::class,'getCarousel']);
+
+   // Route::get('testroute',[BookController::class,'test']);
 });
 
 

@@ -16,7 +16,7 @@ class PermissionSeeder extends Seeder
         $permissions =
         [
             //endpoint
-            ['name' => 'me', 'gaurd_name' => 'sanctum'],
+            ['name' => 'me', 'guard_name' => 'sanctum'],
 
             //book
             ['name'=>'read book', 'guard_name' => 'sanctum'],
