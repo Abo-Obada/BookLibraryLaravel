@@ -11,8 +11,8 @@ class RoleController extends Controller
 {
     public function get()
     {
-        $roles = Role::select(['id','name'])->paginate(10);
-        //awdawdawdaw
+        $roles = Role::select(['id','name'])->paginate(1);
+
         return response()->json($roles);
     }
     public function store(Request $request){
