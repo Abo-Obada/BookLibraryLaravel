@@ -161,12 +161,12 @@ class BookController extends Controller
     }
  return response()->json(['message'=> 'ok'],200);
 }
-}
-public function getCarousel(){
+    }
+    public function getCarousel(){
     return Carousel::orderBy('id','desc')->get();
-}
+    }
 
-public function test()
+    public function test()
 {
     $route = Route::getRoutes();
     $routeName[] = [''];
@@ -177,5 +177,5 @@ public function test()
 
 
     return response()->json(['routes'=> $routeName],200);
-}
+    }
 }

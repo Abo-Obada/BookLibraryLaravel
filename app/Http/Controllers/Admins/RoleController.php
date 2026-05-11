@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Stevebauman\Purify\Facades\Purify;
 
@@ -12,8 +13,16 @@ class RoleController extends Controller
     public function get()
     {
         $roles = Role::select(['id','name'])->paginate(1);
-
         return response()->json($roles);
+    }
+
+    public function getPermission()
+    {
+        $permission = Permission::get()->map(function($item) {
+            $item->isChecked = false;
+            return $item;
+        });
+        return response()->json($permission);
     }
     public function store(Request $request){
         $validated = $request->validate(['name'=>'required']);

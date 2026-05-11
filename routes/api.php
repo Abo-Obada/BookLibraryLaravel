@@ -21,7 +21,7 @@ Route::prefix("user")->group( function(){
     });
 
     Route::post('login',[UserController::class,'login']);
-   // Route::post('login_api',[UserController::class,'loginApi']);
+    Route::post('logintest',[UserController::class,'loginApi']);
     Route::get('bookcover',[BookController::class, 'getAllBooks']);
     Route::get('bookcategory',[BookController::class,'categorizeBook']);
     Route::get('category',[BookController::class,'getCategory']);
@@ -41,6 +41,7 @@ Route::prefix("admin")->group(function (){
         Route::get('me',[AdminController::class,'me']);
         Route::get('getrole',[RoleController::class,'get']);
         Route::post('storerole',[RoleController::class,'store']);
+        Route::get('getallpermission',[RoleController::class,'getPermission']);
     });
 
     Route::post('login',[AdminController::class,'login']);
